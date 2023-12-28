@@ -1,20 +1,20 @@
 import React from "react";
-import Styled from 'styled-components'
+import Styled from "styled-components";
 
 const Register = (props) => {
   let btnText, passBoxType;
-  let btnClasses= ["btn","m-1"]
+  let btnClasses = ["btn", "m-1"];
 
-  const StyledButton= Styled.button`
-    display:block;
+  const StyledButton = Styled.button`
+    display:${(props)=> props.flag=== "1" ? "inline-block" :"block"};
     padding:10px 5px ;
-    background-color:orange;
+    background-color:${(props) => props.bgcolor};
     border:none !important;
     color:white !important;
-    width:100%;
-    margin:5px
+    width:${(props)=> (props.flag === "1" ? "15%" : "100%")};
+    margin:5px;
   `;
-  const StyledRegisterContainer= Styled.div`
+  const StyledRegisterContainer = Styled.div`
     width:690px;
     &:hover{
         box-shadow: 0px 0px 5px grey;
@@ -22,7 +22,7 @@ const Register = (props) => {
     @media (min-width:0px) and (max-width:500px){
         width:200px !important;
     }
-  `
+  `;
   if (props.showpass === true) {
     btnText = "Hide Password";
     passBoxType = "text";
@@ -64,7 +64,16 @@ const Register = (props) => {
         >
           {btnText}
         </button>
-        <StyledButton>Sign-in </StyledButton>
+        <StyledButton type="button" bgcolor="blue" flag="1"> 
+        Login 
+        </StyledButton>
+        <StyledButton type="button" bgcolor="purple" flag="0" >
+          Login-with-Google
+        </StyledButton>
+
+        <StyledButton type="button" bgcolor="black" flag="0" >
+          Sign-Up
+        </StyledButton>
       </form>
     </StyledRegisterContainer>
   );
