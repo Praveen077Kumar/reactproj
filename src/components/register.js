@@ -13,6 +13,15 @@ const Register = (props) => {
     color:white !important;
     width:100%;
     margin:5px
+  `;
+  const StyledRegisterContainer= Styled.div`
+    width:690px;
+    &:hover{
+        box-shadow: 0px 0px 5px grey;
+    }
+    @media (min-width:0px) and (max-width:500px){
+        width:200px !important;
+    }
   `
   if (props.showpass === true) {
     btnText = "Hide Password";
@@ -24,7 +33,7 @@ const Register = (props) => {
     btnClasses.push("btn-success");
   }
   return (
-    <div className="container card p-3 mt-5 register-container">
+    <StyledRegisterContainer className="container card p-3 mt-5 register-container">
       <h3 className="text-center">Registration Form</h3>
       <form onSubmit={props.submit}>
         <div className="form-group">
@@ -57,7 +66,7 @@ const Register = (props) => {
         </button>
         <StyledButton>Sign-in </StyledButton>
       </form>
-    </div>
+    </StyledRegisterContainer>
   );
 };
 
